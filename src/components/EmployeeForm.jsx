@@ -26,10 +26,10 @@ export default function EmployeeForm() {
                 <input type="text" id="last-name" />
 
                 <Label htmlFor="date-of-birth">Date of Birth</Label>
-                <input id="date-of-birth" type="text" />
+                <input id="date-of-birth" type="date" />
 
                 <Label htmlFor="start-date">Start Date</Label>
-                <input id="start-date" type="text" />
+                <input id="start-date" type="date" />
 
                 <Address>
                     <legend>Address</legend>

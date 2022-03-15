@@ -80,13 +80,6 @@ export default function EmployeesTable() {
 	)
 
     const subHeaderComponentMemo = useMemo(() => {
-		const handleClear = () => {
-			if (filterText) {
-				setResetPaginationToggle(!resetPaginationToggle);
-				setFilterText('');
-			}
-		};
-
 		return (
 			<FilterComponent onFilter={e => setFilterText(e.target.value)}  filterText={filterText} />
 		);
