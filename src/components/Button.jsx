@@ -6,7 +6,8 @@ const ClassicButton = styled.button`
     border: 2px solid #272F40;
     padding: 5px;
     background: white;
-    border-radius: 100px
+    border-radius: 100px;
+    cursor: pointer;
 `
 
 export default function Button({text, path}) {
