@@ -16,6 +16,10 @@ export default function EmployeesList() {
             <h1>Current Employees</h1>
             <EmployeesTable />
             <Button path="/" text="Home"/>
+            <button onClick={() => {
+                localStorage.clear()
+                window.location.reload(false)
+                }}>Clear localstorage</button>
         </Container>
         
     )

@@ -3,11 +3,12 @@ import styled from "styled-components"
 
 const ClassicButton = styled.button`
     font-size: 12px;
-    border: 2px solid #272F40;
-    padding: 5px;
+    border: 0px solid #272F40;
+    padding: 8px;
     background: white;
     border-radius: 100px;
     cursor: pointer;
+    filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.1))
 `
 
 export default function Button({text, path}) {

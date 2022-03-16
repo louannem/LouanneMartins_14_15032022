@@ -4,6 +4,7 @@ body {
   font-family: -apple-system,'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(136.79deg, rgba(224, 242, 255, 0.79) 2.43%, rgba(224, 242, 255, 0.79) 53.61%, rgba(234, 231, 248, 0.79) 89.23%), #FFFFFF;
 }
 
 code {
@@ -12,3 +13,24 @@ code {
 }
 
 #root  {   margin: 8px}
+
+.submit-button {
+  font-family: Roboto;
+  font-size: 14px;
+  color: #272F40;
+  width: 129px;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.1));
+  background: radial-gradient(133.33% 2403.3% at -12.84% 14.58%, #E0F2FF 16.27%, #EAE7F8 71.91%, #FFD5D5 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  border-radius: 13px;
+}
+
+.modal-display-block{
+  display: block;
+}
+
+.modal-display-none {
+  display: none!important;
+}

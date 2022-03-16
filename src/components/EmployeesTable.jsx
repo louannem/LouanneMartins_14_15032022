@@ -38,7 +38,7 @@ const columns = [
     },
     { 
         name: 'Date of Birth',
-        selector: row => row.birth
+        selector: row => row.dateOfBirth
     },
     {
         name: 'Street',
@@ -54,28 +54,17 @@ const columns = [
     },
     { 
         name: 'Zip Code',
-        selector: row => row.zip
+        selector: row => row.zipCode
     }
 ];
 
-const data = [
-    {
-        id: 1,
-        firstname: 'Beetlejuice',
-        birth: '1988',
-    },
-    {
-        id: 2,
-        firstname: 'Ghostbusters',
-        birth: '1984',
-    },
-]
 
 
 export default function EmployeesTable() {
-    const [filterText, setFilterText] = useState('')
-    const [resetPaginationToggle, setResetPaginationToggle] = useState(false)
-    const filteredItems = data.filter(
+    const [filterText, setFilterText] = useState('')    
+    const employees = JSON.parse(localStorage.getItem('employees')) || []
+
+    const filteredItems = employees.filter(
 		item => item.firstname.toLowerCase().includes(filterText.toLowerCase()),
 	)
 
@@ -83,7 +72,7 @@ export default function EmployeesTable() {
 		return (
 			<FilterComponent onFilter={e => setFilterText(e.target.value)}  filterText={filterText} />
 		);
-	}, [filterText, resetPaginationToggle]);
+	}, [filterText]);
 
     return(
         <DataTable

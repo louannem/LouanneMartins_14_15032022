@@ -2,6 +2,7 @@ import FormHeader from "../components/formHeader";
 import styled from "styled-components"
 import EmployeeForm from "../components/EmployeeForm";
 import Button from "../components/Button";
+import { useState } from "react";
 
 const Container = styled.div`
     display: flex;
@@ -10,9 +11,6 @@ const Container = styled.div`
     justify-content: center;
 `
 
-const ValidateForm = styled.button`
-    
-`
 
 export default function NewEmployee() {
     return(
@@ -22,7 +20,6 @@ export default function NewEmployee() {
                 <Button path="/employees-list" text="View Current Employees"/>
                 <h2>Create Employee</h2>
                 <EmployeeForm />
-                <ValidateForm>Save</ValidateForm>
             </Container>
         </div>   
     )
