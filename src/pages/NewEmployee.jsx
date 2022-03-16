@@ -2,7 +2,6 @@ import FormHeader from "../components/formHeader";
 import styled from "styled-components"
 import EmployeeForm from "../components/EmployeeForm";
 import Button from "../components/Button";
-import { useState } from "react";
 
 const Container = styled.div`
     display: flex;

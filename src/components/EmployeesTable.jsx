@@ -56,8 +56,30 @@ const columns = [
         name: 'Zip Code',
         selector: row => row.zipCode
     }
-];
+]
 
+const customStyles = {
+    subHeader: {
+		style: {
+			borderRadius: '20px 20px 0px 0px',
+            width: '85%'
+		},
+	},
+    pagination: {
+		style: {
+			marginTop: '10px',
+            backgroundColor: 'transparent',
+            border: 'none',
+            color: '#272F40'
+		},
+	},
+    headCells: {
+        style: {
+            color: '#272F40',
+            fontSize: '14px'
+        }
+    }
+}
 
 
 export default function EmployeesTable() {
@@ -81,6 +103,7 @@ export default function EmployeesTable() {
             pagination
             subHeader
             subHeaderComponent={subHeaderComponentMemo}
+            customStyles={customStyles}
         />
     )
 }

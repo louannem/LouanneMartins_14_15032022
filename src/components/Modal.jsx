@@ -7,7 +7,7 @@ const Overlay = styled.div`
     right: 0;
     z-index: 1;
     width: 100%;
-    height: 100%;
+    height: 120%;
     background: rgba(39,47,64,30%);
 
     display: flex;
@@ -29,6 +29,7 @@ const CloseButton = styled.img`
     bottom: 53%;
     left: 70%;
     width: 35px;
+    cursor: pointer;
 `
 
 export default function Modal({handleClose, show}){
