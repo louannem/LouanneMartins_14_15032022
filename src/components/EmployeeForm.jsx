@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { states } from '../utils/constants'
 import Modal from './Modal'
+
+import { employeeInfo } from '../redux/newEmployee'
+
 
 const Label = styled.label `
     display: block;
@@ -95,11 +99,13 @@ export default function EmployeeForm() {
 
     const [isOpen, setOpen] = useState(false)
   
+    const dispatch = useDispatch()
 
     const openModal = () => { setOpen(true) }
     const closeModal = (e) => { e.preventDefault(); setOpen(false); console.log(isOpen) }
 
     const employees = JSON.parse(localStorage.getItem('employees')) || []
+    const employeeInArray = useSelector((state) => state.newEmployee.employeeList)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -118,20 +124,23 @@ export default function EmployeeForm() {
 
         employees.push(employee)
         localStorage.setItem('employees', JSON.stringify(employees))
+        dispatch(employeeInfo(employee))
         openModal()
+
     }
 
-    
 
     useEffect(() => {
-        const stateSelect = document.getElementById('state');
+        const stateSelect = document.getElementById('state')
         states.forEach(function(state) {
-            const option = document.createElement('option');
+            const option = document.createElement('option')
             option.value = state.abbreviation;
             option.text = state.name;
-            stateSelect.appendChild(option);
+            stateSelect.appendChild(option)
         })
-    }, [isOpen])
+
+        console.log(employeeInArray)
+    }, [isOpen, employeeInArray])
 
     return(
         <div>

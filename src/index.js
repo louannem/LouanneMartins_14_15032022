@@ -4,16 +4,22 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './utils/styles/index.css';
 import EmployeesList from './pages/EmployeesList';
 import NewEmployee from './pages/NewEmployee';
+import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
+import { store } from './redux/store'
+
+
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
       <Router>
         <Routes>
           <Route path="/employees-list" element={<EmployeesList />}></Route>
           <Route path="/" element={<NewEmployee />}></Route>
         </Routes>
       </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,6 +1,7 @@
 import DataTable from 'react-data-table-component'
 import { useState, useMemo } from 'react'
-import FilterComponent from './FilterComponent';
+import FilterComponent from './FilterComponent'
+import { useSelector } from 'react-redux';
 
 const caseInsensitiveSort = (rowA, rowB) => {
     const a = rowA.firstname.toLowerCase();
@@ -84,7 +85,7 @@ const customStyles = {
 
 export default function EmployeesTable() {
     const [filterText, setFilterText] = useState('')    
-    const employees = JSON.parse(localStorage.getItem('employees')) || []
+    const employees = useSelector((state) => state.newEmployee.employeeList) || []
 
     const filteredItems = employees.filter(
 		item => item.firstname.toLowerCase().includes(filterText.toLowerCase()),
