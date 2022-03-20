@@ -88,7 +88,14 @@ export default function EmployeesTable() {
     const employees = useSelector((state) => state.newEmployee.employeeList) || []
 
     const filteredItems = employees.filter(
-		item => item.firstname.toLowerCase().includes(filterText.toLowerCase()),
+		item => item.firstname.toLowerCase().includes(filterText.toLowerCase()) || 
+        item.lastname.toLowerCase().includes(filterText.toLowerCase()) ||
+        item.department.toLowerCase().includes(filterText.toLowerCase()) ||
+        item.dateOfBirth.toLowerCase().includes(filterText.toLowerCase()) ||
+        item.startDate.toLowerCase().includes(filterText.toLowerCase()) ||
+        item.state.toLowerCase().includes(filterText.toLowerCase()) ||
+        item.city.toLowerCase().includes(filterText.toLowerCase()) ||
+        item.street.toLowerCase().includes(filterText.toLowerCase()),
 	)
 
     const subHeaderComponentMemo = useMemo(() => {

@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { states } from '../utils/constants'
+import { states, departments } from '../utils/constants'
 import Modal from './Modal'
 
 import { employeeInfo } from '../redux/newEmployee'
+import SelectComponent from './SelectComponent'
 
 
 const Label = styled.label `
+    position: relative;
+    z-index: 1;
     display: block;
     margin-top: 1rem;
     margin-bottom: 10px;
@@ -16,6 +19,8 @@ const Label = styled.label `
 `
 
 const Input = styled.input`
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 20px;
     background: #FFFFFF;
@@ -28,15 +33,6 @@ const Input = styled.input`
     }
 `
 
-const Select = styled.select`
-    height: 30px;
-    background-color: #272F40;
-    border: none;
-    border-radius: 2px;
-    color: #EAE7F8;
-    padding: 5px;
-    box-sizing: border-box
-`
 
 const FormGroup = styled.div`
     display: flex;  
@@ -67,6 +63,7 @@ const Legend = styled.legend`
 `
 
 const Form = styled.form`
+    position: relative;
     margin-bottom: 16px;
     width: 700px;
     padding: 35px 75px;
@@ -126,18 +123,24 @@ export default function EmployeeForm() {
         localStorage.setItem('employees', JSON.stringify(employees))
         dispatch(employeeInfo(employee))
         openModal()
+    }
 
+    const getState = (data) => {
+        setState(data)
+    }
+    const getDepartment = (data) => {
+        setDepartment(data)
     }
 
 
     useEffect(() => {
-        const stateSelect = document.getElementById('state')
+       /* const stateSelect = document.getElementById('state')
         states.forEach(function(state) {
             const option = document.createElement('option')
             option.value = state.abbreviation;
             option.text = state.name;
             stateSelect.appendChild(option)
-        })
+        })*/
 
         console.log(employeeInArray)
     }, [isOpen, employeeInArray])
@@ -181,8 +184,8 @@ export default function EmployeeForm() {
                             </InputGroup>
 
                             <InputGroup>
-                                    <Label htmlFor="state">State</Label>
-                                    <Select name="state" id="state" defaultValue="Alabama" onChange={(e) => setState(e.target.value)}></Select>
+                                    <Label htmlFor="state">State</Label>                                    
+                                    <SelectComponent defaultText="Alabama" optionsList={states} getOption={getState} />
 
                                     <Label htmlFor="zip-code">Zip Code</Label>
                                     <Input id="zip-code" type="number" onChange={(e) => setCode(e.target.value) } />
@@ -192,13 +195,9 @@ export default function EmployeeForm() {
                     </Address>
 
                     <Label htmlFor="department">Department</Label>
-                    <Select name="department" id="department" defaultValue="Sales" onChange={(e) => setDepartment(e.target.value)}>
-                        <option >Sales</option>
-                        <option>Marketing</option>
-                        <option>Engineering</option>
-                        <option>Human Resources</option>
-                        <option>Legal</option>
-                    </Select>
+                    <SelectComponent defaultText="Sales" optionsList={departments} getOption={getDepartment} />
+
+                    
                     
                     <SubmitButton>
                        <button className='submit-button'>Save</button> 
