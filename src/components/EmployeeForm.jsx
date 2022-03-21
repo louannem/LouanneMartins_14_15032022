@@ -6,8 +6,14 @@ import Modal from './Modal'
 
 import { employeeInfo } from '../redux/newEmployee'
 import SelectComponent from './SelectComponent'
+import DatePicker from './DatePicker'
 
-
+const FormTitle = styled.h2`
+    text-align: center;
+    font-size: 35px;
+    color: #272F40;
+    margin: 0px 0px 25px 0px;
+`
 const Label = styled.label `
     position: relative;
     z-index: 1;
@@ -70,7 +76,7 @@ const Form = styled.form`
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(7px);
-    border-radius: 50px;
+    border-radius: 30px;
     box-sizing: border-box;
 `
 
@@ -79,8 +85,9 @@ const SubmitButton = styled.div`
     display : flex;
     align-items: center;
     justify-content: center;
-    margin: 10px 0px
+    margin: 35px 0px 0px 15px;
 `
+
 
 
 export default function EmployeeForm() {
@@ -99,7 +106,7 @@ export default function EmployeeForm() {
     const dispatch = useDispatch()
 
     const openModal = () => { setOpen(true) }
-    const closeModal = (e) => { e.preventDefault(); setOpen(false); console.log(isOpen) }
+    const closeModal = (e) => { e.preventDefault(); setOpen(false) }
 
     const employees = JSON.parse(localStorage.getItem('employees')) || []
     const employeeInArray = useSelector((state) => state.newEmployee.employeeList)
@@ -131,23 +138,29 @@ export default function EmployeeForm() {
     const getDepartment = (data) => {
         setDepartment(data)
     }
+    const getDate = (data) => {
+        setBirth(data)
+    }
 
+    const getStart = (timestamp) => {
+        let selectedDay = new Date(timestamp)
+        const options = {day: '2-digit', month: '2-digit', year: 'numeric'}
+        setStart(new Intl.DateTimeFormat('en-US', options).format(selectedDay))
+    }
+    const getBirth = (timestamp) => {
+        let selectedDay = new Date(timestamp)
+        const options = {day: '2-digit', month: '2-digit', year: 'numeric'}
+        setBirth(new Intl.DateTimeFormat('en-US', options).format(selectedDay))
+    }
 
     useEffect(() => {
-       /* const stateSelect = document.getElementById('state')
-        states.forEach(function(state) {
-            const option = document.createElement('option')
-            option.value = state.abbreviation;
-            option.text = state.name;
-            stateSelect.appendChild(option)
-        })*/
-
         console.log(employeeInArray)
-    }, [isOpen, employeeInArray])
+    }, [employeeInArray])
 
     return(
         <div>
             <Form  id="create-employee" onSubmit={handleSubmit}>
+                <FormTitle>Create employee</FormTitle>
                 <FormGroup>
                     <InputGroup>
                         <Label htmlFor="first-name">First Name</Label>
@@ -161,12 +174,12 @@ export default function EmployeeForm() {
                     
                     <InputGroup>
                         <Label htmlFor="date-of-birth">Date of Birth</Label>
-                        <Input id="date-of-birth" type="date" onChange={(e) => setBirth(e.target.value)} />
+                        <DatePicker onChange={getBirth}  />
                     </InputGroup>
 
                     <InputGroup>
                         <Label htmlFor="start-date">Start Date</Label>
-                        <Input id="start-date" type="date" onChange={(e) => setStart(e.target.value) } />
+                        <DatePicker onChange={getStart} getOption={getDate} />
                     </InputGroup>
                 
                 </FormGroup>

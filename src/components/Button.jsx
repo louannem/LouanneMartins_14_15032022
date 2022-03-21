@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const ClassicButton = styled.button`
     min-width: 80px;
-    margin: 10px 0px;
+    margin: 10px  0px;
     font-size: 13px;
     border: 0px solid #272F40;
     padding: 8px;
@@ -15,7 +15,7 @@ const ClassicButton = styled.button`
 
 export default function Button({text, path}) {
     return(
-        <Link to={path}>
+        <Link to={path} style={{margin: "10px 0px 30px 0px"}}>
             <ClassicButton>{text}</ClassicButton>
         </Link>
     )

@@ -17,7 +17,6 @@ export default function NewEmployee() {
             <FormHeader />
             <Container>
                 <Button path="/employees-list" text="View Current Employees"/>
-                <h2>Create Employee</h2>
                 <EmployeeForm />
             </Container>
         </div>   
