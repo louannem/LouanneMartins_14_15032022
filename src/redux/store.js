@@ -31,7 +31,6 @@ export const saveState = (state) => {
 
 const peristedState = loadState()
 
-
 const reducer = combineReducers({
     newEmployee: createEmployeeReducer,
 })
@@ -55,6 +54,6 @@ const reduxDevtools =
 
 export const store = createStore(reducer, peristedState, reduxDevtools)
 
-store.subscribe(() =>{
+store.subscribe(() => {
     saveState(store.getState())
 })

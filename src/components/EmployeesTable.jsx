@@ -56,8 +56,7 @@ const columns = [
 const customStyles = {
     subHeader: {
 		style: {
-			borderRadius: '20px 20px 0px 0px',
-            width: '85%'
+			borderRadius: '20px 20px 0px 0px'
 		},
 	},
     pagination: {
