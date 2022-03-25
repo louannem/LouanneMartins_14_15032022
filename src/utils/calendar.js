@@ -54,7 +54,9 @@ export const getMonthDetails =(year, month)=> {
             monthArray.push(currentDay);
             index++;
         }
+   
     }
+    console.log(monthArray)
     return monthArray;
 }
 

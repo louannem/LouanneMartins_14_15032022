@@ -37,6 +37,7 @@ const initialState = {
   monthDetails: getMonthDetails(date.getFullYear(), date.getMonth())
 }
 
+
 export default function DatePicker(props) {
   const el = useRef(null)
   const inputRef = createRef()

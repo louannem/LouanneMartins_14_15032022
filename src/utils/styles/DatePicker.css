@@ -22,6 +22,17 @@
     align-items: center;
 }
 
+.table-filter {
+    float: right;
+    width: 200px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 2px
+}
+
 .mdp-input:focus-visible {
     outline: 3px solid #FFDECB;
 }
@@ -30,6 +41,13 @@
     position: absolute;
     z-index: 3;
     left: 86%;
+}
+
+.table-filter img {
+    position: relative;
+    z-index: 3;
+    left: 85%;
+    height: 18px;
 }
 
 .mdp-container {

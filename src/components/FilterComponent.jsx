@@ -1,11 +1,15 @@
 import styled from 'styled-components'
+import SearchIcon from '../assets/search.svg'
 
 const Input = styled.input`
-    height: 10px;
+    position: relative;
+    z-index: 1;
+    width: 95%;
+    height: 20px;
     background: #FFFFFF;
     border: 1px solid #272F40;
     border-radius: 15px;
-    padding: 5px;
+    padding: 3px 5px;
 
     &:focus-visible {
         outline: 3px solid #FFDECB
@@ -14,8 +18,8 @@ const Input = styled.input`
 
 export default function FilterComponent({onFilter}){
     return(
-        <div>
-            <span>Search : </span>
+        <div className='table-filter'>
+            <img src={SearchIcon} alt="Search icon" />
             <Input onChange={onFilter}></Input>
         </div>
     )

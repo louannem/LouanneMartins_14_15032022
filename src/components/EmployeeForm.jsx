@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { states, departments } from '../utils/constants'
 import Modal from './Modal'
@@ -109,7 +109,6 @@ export default function EmployeeForm() {
     const closeModal = (e) => { e.preventDefault(); setOpen(false) }
 
     const employees = JSON.parse(localStorage.getItem('employees')) || []
-    const employeeInArray = useSelector((state) => state.newEmployee.employeeList)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -143,7 +142,7 @@ export default function EmployeeForm() {
     }
 
     const getStart = (timestamp) => {
-        let selectedDay = new Date(timestamp)
+        let selectedDay = new Date(timestamp) 
         const options = {day: '2-digit', month: '2-digit', year: 'numeric'}
         setStart(new Intl.DateTimeFormat('en-US', options).format(selectedDay))
     }
@@ -153,14 +152,10 @@ export default function EmployeeForm() {
         setBirth(new Intl.DateTimeFormat('en-US', options).format(selectedDay))
     }
 
-    useEffect(() => {
-        console.log(employeeInArray)
-    }, [employeeInArray])
-
     return(
         <div>
             <Form  id="create-employee" onSubmit={handleSubmit}>
-                <FormTitle>Create employee</FormTitle>
+                <FormTitle>Create Employee</FormTitle>
                 <FormGroup>
                     <InputGroup>
                         <Label htmlFor="first-name">First Name</Label>

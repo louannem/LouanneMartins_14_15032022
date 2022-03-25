@@ -3,59 +3,53 @@ import { useState, useMemo } from 'react'
 import FilterComponent from './FilterComponent'
 import { useSelector } from 'react-redux';
 
-const caseInsensitiveSort = (rowA, rowB) => {
-    const a = rowA.firstname.toLowerCase();
-    const b = rowB.firstname.toLowerCase();
 
-    if (a > b) {
-        return 1;
-    }
-
-    if (b > a) {
-        return -1;
-    }
-
-    return 0;
-};
 
 const columns = [
     {
         name: 'First Name',
         selector: row => row.firstname,
-        sortable: true,
-        sortFunction: caseInsensitiveSort
+        sortable: true
     },
     {
         name: 'Last Name',
         selector: row => row.lastname,
+        sortable: true
     },
     {
         name: 'Start Date',
-        selector: row => row.startDate
+        selector: row => row.startDate,
+        sortable: true
     },
     {
         name: 'Department',
-        selector: row => row.department
+        selector: row => row.department,
+        sortable: true
     },
     { 
         name: 'Date of Birth',
-        selector: row => row.dateOfBirth
+        selector: row => row.dateOfBirth,
+        sortable: true
     },
     {
         name: 'Street',
-        selector: row => row.street
+        selector: row => row.street,
+        sortable: true
     },
     {
         name: 'City',
-        selector: row => row.city
+        selector: row => row.city,
+        sortable: true
     },
     {
         name: 'State',
-        selector: row => row.state
+        selector: row => row.state,
+        sortable: true
     },
     { 
         name: 'Zip Code',
-        selector: row => row.zipCode
+        selector: row => row.zipCode,
+        sortable: true
     }
 ]
 
