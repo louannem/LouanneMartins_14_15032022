@@ -10,6 +10,7 @@ import { store } from './redux/store'
 
 export const reactDOM = ReactDOM
 
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

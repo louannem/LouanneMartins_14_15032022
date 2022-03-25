@@ -30,7 +30,7 @@ const oneDay = 60 * 60 * 24 * 1000
 const todayTimestamp = date.getTime() - (date.getTime() % oneDay) + (date.getTimezoneOffset() * 1000 * 60)
 
 const initialState = {
-  todayTimestamp: todayTimestamp, // or todayTimestamp, for short
+  todayTimestamp: todayTimestamp,
   year: date.getFullYear(),
   month: date.getMonth(),
   selectedDay: todayTimestamp,
@@ -42,7 +42,6 @@ export default function DatePicker(props) {
   const el = useRef(null)
   const inputRef = createRef()
   const [state, dispatch] = useReducer(reducer, initialState)
-  /** Maybe you could add this to initialState 🤷🏽‍♂️ */
   const [showDatePicker, setShowDatePicker] = useState(false)
 
   const addBackDrop = e => {
@@ -57,20 +56,14 @@ export default function DatePicker(props) {
   }
 
   useEffect(() => {
-    /** 
-     * Only needed when using SSR ie Next.js 
-     * Uncomment if you're using SSR:
-     * if (!process.browser) { return }
-     */
-
     window.addEventListener('click', addBackDrop)
     setDateToInput(state.selectedDay)
     
-
     // returned function will be called on component unmount 
     return () => {
       window.removeEventListener('click', addBackDrop)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showDatePicker])
 
   const isCurrentDay = day => day.timestamp === todayTimestamp

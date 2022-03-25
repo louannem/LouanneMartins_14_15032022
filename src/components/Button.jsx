@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-const ClassicButton = styled.button`
+export const ClassicButton = styled.button`
     min-width: 80px;
     margin: 10px  0px;
     font-size: 13px;

@@ -56,7 +56,6 @@ export const getMonthDetails =(year, month)=> {
         }
    
     }
-    console.log(monthArray)
     return monthArray;
 }
 
