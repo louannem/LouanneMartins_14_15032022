@@ -110,6 +110,10 @@ export default function EmployeeForm() {
 
     const employees = JSON.parse(localStorage.getItem('employees')) || []
 
+    /**
+     * Submit the form
+     * @param {*} e 
+     */
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -141,11 +145,19 @@ export default function EmployeeForm() {
         setBirth(data)
     }
 
+    /**
+     * Retreive the start period  into the input & convert it into date-time format
+     * @param {number} timestamp 
+     */
     const getStart = (timestamp) => {
         let selectedDay = new Date(timestamp) 
         const options = {day: '2-digit', month: '2-digit', year: 'numeric'}
         setStart(new Intl.DateTimeFormat('en-US', options).format(selectedDay))
     }
+    /**
+     * Retreive the birth date  into the input & convert it into date-time format
+     * @param {number} timestamp 
+     */
     const getBirth = (timestamp) => {
         let selectedDay = new Date(timestamp)
         const options = {day: '2-digit', month: '2-digit', year: 'numeric'}

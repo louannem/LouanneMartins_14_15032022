@@ -24,7 +24,7 @@ const Input = styled.input`
     }
 `
 
-/** We'll use useReducer to manage our state **/
+/** useReducer used to manage the state **/
 const date = new Date()
 const oneDay = 60 * 60 * 24 * 1000
 const todayTimestamp = date.getTime() - (date.getTime() % oneDay) + (date.getTimezoneOffset() * 1000 * 60)
@@ -44,12 +44,20 @@ export default function DatePicker(props) {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [showDatePicker, setShowDatePicker] = useState(false)
 
+  /**
+   * Closes the datepicker if clicked outside of it
+   * @param {*} e 
+   */
   const addBackDrop = e => {
     if(showDatePicker && (el && !el.current.contains(e.target))) {
       setShowDatePicker(false);
     }
   }
 
+  /**
+   * Adds selected date into the input
+   * @param {number} timestamp Timestamp of selected time
+   */
   const setDateToInput = (timestamp) => {
     const dateString = getDateStringFromTimestamp(timestamp)
     inputRef.current.value = dateString
@@ -70,6 +78,10 @@ export default function DatePicker(props) {
   const isSelectedDay = day =>  day.timestamp === state.selectedDay
   const getMonthStr = month => monthMap[Math.max(Math.min(11, month), 0)] || 'Month'
 
+  /**
+   * Selects a date
+   * @param {object} day Object containing details of selected date (day, month, year)
+   */
   const onDateClick = day => {
     dispatch({type: 'selectedDay', value: day.timestamp})
     setDateToInput(day.timestamp)
@@ -78,12 +90,20 @@ export default function DatePicker(props) {
     props.onChange(day.timestamp)
   }
 
+  /**
+   * Change state's year based on offset
+   * @param {number} offset 
+   */
   const setYear = offset => {
     const year = state.year + offset
     dispatch({type: 'year', value: year})
     dispatch({type: 'monthDetails', value: getMonthDetails(year, state.month)})
   }
 
+  /**
+   * Change state's month based on offset & month's array index
+   * @param {number} offset 
+   */
   const setMonth = offset => {
     let year = state.year
     let month = state.month + offset
@@ -100,14 +120,26 @@ export default function DatePicker(props) {
     dispatch({type: 'monthDetails', value: getMonthDetails(year, month)})
   }
 
+  /**
+   * Adds newly selected date to the state
+   * @param {object} dateData Selected date containing its details (day, month, year)
+   */
   const setDate = (dateData) => {
     const selectedDay = new Date(dateData.year, dateData.month - 1, dateData.date).getTime()
     dispatch({type: 'selectedDay', value: selectedDay})
 
-    /** Pass data to parent */
+    /**
+     * Pass data to parent component
+     */
     props.onChange(selectedDay)
   }
 
+
+  /**
+   * Transform a date in string format to an object
+   * @param {string} dateValue date to transform
+   * @returns new date into object format
+   */
   const getDateFromDateString = dateValue => {
     const dateData = dateValue.split('-').map(d => parseInt(d, 10))
 
@@ -121,6 +153,9 @@ export default function DatePicker(props) {
     return {year, month, date}
  }
 
+   /**
+   * Creates a new date from the one added into the input & adds it into the state
+   */
   const updateDateFromInput =()=> {
     const dateValue = inputRef.current.value
     const dateData = getDateFromDateString(dateValue)
@@ -133,6 +168,9 @@ export default function DatePicker(props) {
     }
   }
 
+  /**
+   * Weekdays component
+   */
   const daysMarkup = (
     state.monthDetails.map((day, index) => (
       <div className={'c-day-container ' + (day.month !== 0 ? ' disabled' : '') + 
@@ -146,6 +184,9 @@ export default function DatePicker(props) {
     ))
   )
 
+  /**
+   * Calendar component
+   */
   const calendarMarkup = (
     <div className='c-container'>
         <div className='cc-head'>
