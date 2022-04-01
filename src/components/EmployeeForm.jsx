@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { states, departments } from '../utils/constants'
@@ -6,7 +6,9 @@ import Modal from './Modal'
 
 import { employeeInfo } from '../redux/newEmployee'
 import SelectComponent from './SelectComponent'
-import DatePicker from './DatePicker'
+//import DatePicker from './DatePicker'
+import { DatePicker } from 'datepicker-library-oc'
+import "datepicker-library-oc/dist/index.css"
 
 const FormTitle = styled.h2`
     text-align: center;
@@ -108,7 +110,7 @@ export default function EmployeeForm() {
     const openModal = () => { setOpen(true) }
     const closeModal = (e) => { e.preventDefault(); setOpen(false) }
 
-    const employees = JSON.parse(localStorage.getItem('employees')) || []
+    const employees = []
 
     /**
      * Submit the form
@@ -130,7 +132,6 @@ export default function EmployeeForm() {
         }
 
         employees.push(employee)
-        localStorage.setItem('employees', JSON.stringify(employees))
         dispatch(employeeInfo(employee))
         openModal()
     }
@@ -164,6 +165,16 @@ export default function EmployeeForm() {
         setBirth(new Intl.DateTimeFormat('en-US', options).format(selectedDay))
     }
 
+    const getValue = (value) => { 
+        setStart(value)
+        return value 
+    }
+
+
+    useEffect(() => {
+        console.log(startDate)
+    }, [startDate])
+
     return(
         <div>
             <Form  id="create-employee" onSubmit={handleSubmit}>
@@ -181,12 +192,12 @@ export default function EmployeeForm() {
                     
                     <InputGroup>
                         <Label htmlFor="date-of-birth">Date of Birth</Label>
-                        <DatePicker onChange={getBirth}  />
+                        <DatePicker inputValue={getValue}  />
                     </InputGroup>
 
                     <InputGroup>
                         <Label htmlFor="start-date">Start Date</Label>
-                        <DatePicker onChange={getStart} getOption={getDate} />
+                        <DatePicker inputValue={getValue} onChange={getValue} inputIcon={true} />
                     </InputGroup>
                 
                 </FormGroup>

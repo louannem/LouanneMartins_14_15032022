@@ -48,4 +48,31 @@ h1 {
 .modal-display-block{ display: block; }
 .modal-display-none { display: none!important; }
 
+#react-datepicker-plugin {
+  width: 100%!important;
+  position: relative;
+  top: 15px;
+  margin-bottom: 50px;
+}
+
+#datepicker-input-wrapper input {
+  height: 20px;
+  background: #FFFFFF;
+  border: 1px solid #272F40;
+  border-radius: 15px;
+  padding: 5px!important;
+}
+
+#datepicker-input-wrapper input:focus-visible {
+  outline: 3px solid #FFDECB;
+}
+
 .eCUAZs { border-radius: 0px 0px 20px 20px!important; }
+
+
+.table-filter {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
