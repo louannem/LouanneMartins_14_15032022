@@ -142,34 +142,10 @@ export default function EmployeeForm() {
     const getDepartment = (data) => {
         setDepartment(data)
     }
-    const getDate = (data) => {
-        setBirth(data)
-    }
 
-    /**
-     * Retreive the start period  into the input & convert it into date-time format
-     * @param {number} timestamp 
-     */
-    const getStart = (timestamp) => {
-        let selectedDay = new Date(timestamp) 
-        const options = {day: '2-digit', month: '2-digit', year: 'numeric'}
-        setStart(new Intl.DateTimeFormat('en-US', options).format(selectedDay))
-    }
-    /**
-     * Retreive the birth date  into the input & convert it into date-time format
-     * @param {number} timestamp 
-     */
-    const getBirth = (timestamp) => {
-        let selectedDay = new Date(timestamp)
-        const options = {day: '2-digit', month: '2-digit', year: 'numeric'}
-        setBirth(new Intl.DateTimeFormat('en-US', options).format(selectedDay))
-    }
 
-    const getValue = (value) => { 
-        setStart(value)
-        return value 
-    }
-
+    const getBirth = (date) => { setBirth(date)}
+    const getStart = (date) => { setStart(date)}
 
     useEffect(() => {
         console.log(startDate)
@@ -192,12 +168,12 @@ export default function EmployeeForm() {
                     
                     <InputGroup>
                         <Label htmlFor="date-of-birth">Date of Birth</Label>
-                        <DatePicker inputValue={getValue}  />
+                        <DatePicker  onChange={getBirth} startMonth={0} startYear={1960} />
                     </InputGroup>
 
                     <InputGroup>
                         <Label htmlFor="start-date">Start Date</Label>
-                        <DatePicker inputValue={getValue} onChange={getValue} inputIcon={true} />
+                        <DatePicker onChange={getStart} />
                     </InputGroup>
                 
                 </FormGroup>

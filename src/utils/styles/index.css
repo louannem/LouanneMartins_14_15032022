@@ -76,3 +76,11 @@ h1 {
   align-items: center;
   position: relative;
 }
+
+#datepicker-wrapper {
+  border-radius: 20px;
+}
+
+#datepicker-calendar div {
+  border-radius: 100px;
+}
