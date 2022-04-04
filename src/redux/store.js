@@ -11,7 +11,7 @@ const reducer = combineReducers({
 })
 
 
-function createEmployeeReducer(state = initialState, action) {
+export function createEmployeeReducer(state = initialState, action) {
     if(action.type === "EMPLOYEE_INFO") {
         return {
             ...state,
