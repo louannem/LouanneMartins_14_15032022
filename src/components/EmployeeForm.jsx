@@ -168,12 +168,12 @@ export default function EmployeeForm() {
                     
                     <InputGroup>
                         <Label htmlFor="date-of-birth">Date of Birth</Label>
-                        <DatePicker  onChange={getBirth} startMonth={0} startYear={1960} closeButton={false} />
+                        <DatePicker  onChange={getBirth} labelID="date-of-birth" startMonth={0} startYear={1960} closeButton={false} />
                     </InputGroup>
 
                     <InputGroup>
                         <Label htmlFor="start-date">Start Date</Label>
-                        <DatePicker onChange={getStart} closeButton={false} />
+                        <DatePicker onChange={getStart} labelID="start-date" closeButton={false} />
                     </InputGroup>
                 
                 </FormGroup>
