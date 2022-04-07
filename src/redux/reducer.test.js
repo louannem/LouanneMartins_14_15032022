@@ -16,3 +16,4 @@ describe('Create employee reducer', () => {
         expect(screen.getByText('There are no records to display')).toBeInTheDocument()
     })
 })
+

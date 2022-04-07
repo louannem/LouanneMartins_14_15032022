@@ -91,7 +91,10 @@ const SubmitButton = styled.div`
 `
 
 
-
+/**
+ * Form component to add an employee to the data table
+ * @returns JSX component
+ */
 export default function EmployeeForm() {
     const [firstname, setFirstname] = useState('')
     const [lastname, setLastname] = useState('')
@@ -158,12 +161,12 @@ export default function EmployeeForm() {
                 <FormGroup>
                     <InputGroup>
                         <Label htmlFor="first-name">First Name</Label>
-                        <Input type="text" id="first-name" onChange={(e) => setFirstname(e.target.value) } />
+                        <Input type="text" id="first-name" onChange={(e) => setFirstname(e.target.value) } required />
                     </InputGroup>
                    
                     <InputGroup>
                         <Label htmlFor="last-name">Last Name</Label>
-                        <Input type="text" id="last-name" onChange={(e) =>  setLastname(e.target.value) } />
+                        <Input type="text" id="last-name" onChange={(e) =>  setLastname(e.target.value) } required />
                     </InputGroup>
                     
                     <InputGroup>
@@ -184,18 +187,18 @@ export default function EmployeeForm() {
                             <FormGroup>
                             <InputGroup>
                                 <Label htmlFor="street">Street</Label>
-                                <Input id="street" type="text" onChange={(e) => setStreet(e.target.value) } />
+                                <Input id="street" type="text" onChange={(e) => setStreet(e.target.value) } required />
 
                                 <Label htmlFor="city">City</Label>
-                                <Input id="city" type="text" onChange={(e) => setCity(e.target.value) } />
+                                <Input id="city" type="text" onChange={(e) => setCity(e.target.value) } required />
                             </InputGroup>
 
                             <InputGroup>
                                     <Label htmlFor="state">State</Label>                                    
-                                    <SelectComponent defaultText="Alabama" optionsList={states} getOption={getState} />
+                                    <SelectComponent defaultText="Alabama" optionsList={states} getOption={getState}  />
 
                                     <Label htmlFor="zip-code">Zip Code</Label>
-                                    <Input id="zip-code" type="number" onChange={(e) => setCode(e.target.value) } />
+                                    <Input id="zip-code" type="number" onChange={(e) => setCode(e.target.value) } required />
                             </InputGroup>  
                         </FormGroup>
                                               

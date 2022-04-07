@@ -45,7 +45,13 @@ const ListItem = styled.div`
         color: #272F40!important;
     }
 `
-
+/**
+ * Select component for React app
+ * @param {string} defaultText Default option/text to show before opening the dropdown
+ * @param {array} optionList Lists of option to put into the dropdown menu
+ * @param {function} getOption Function to retreive the selected option
+ * @returns JSX component
+ */
 export default function SelectComponent({defaultText, optionsList, getOption}) {
     const [isOpen, setIsOpen] = useState(false)
     const [selectedOption, setSelected] = useState(null)

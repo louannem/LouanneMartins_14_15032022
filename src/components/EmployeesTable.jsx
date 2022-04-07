@@ -75,7 +75,10 @@ const customStyles = {
     }
 }
 
-
+/**
+ * Data table build with the react-data-table-component
+ * @returns JSX component
+ */
 export default function EmployeesTable() {
     const [filterText, setFilterText] = useState('')    
     const employees = useSelector((state) => state.newEmployee.employeeList) || []

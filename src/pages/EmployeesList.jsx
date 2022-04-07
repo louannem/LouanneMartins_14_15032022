@@ -11,7 +11,6 @@ const Container = styled.div`
     margin: auto;
 `
 
-
 export default function EmployeesList() {
     return(
         <Container>

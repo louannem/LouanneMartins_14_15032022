@@ -6,7 +6,6 @@ const Title = styled.div`
     justify-content: center;
 `
 
-
 export default function FormHeader() {
     return(
         <Title>

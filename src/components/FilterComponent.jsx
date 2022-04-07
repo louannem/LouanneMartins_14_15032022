@@ -22,7 +22,11 @@ const InputIcon = styled.img`
     right: 10px;
     height: 20px;
 `
-
+/**
+ * Filter component for the data table of employees
+ * @param {function} onFilter Filter function
+ * @returns JSX component
+ */
 export default function FilterComponent({onFilter}){
     return(
         <div className='table-filter'>
